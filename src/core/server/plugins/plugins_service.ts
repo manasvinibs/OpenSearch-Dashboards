@@ -33,6 +33,7 @@ import { Observable } from 'rxjs';
 import { filter, first, map, mergeMap, tap, toArray } from 'rxjs/operators';
 import { pick } from '@osd/std';
 
+import { ApiResponse } from '@opensearch-project/opensearch';
 import { CoreService } from '../../types';
 import { CoreContext } from '../core_context';
 import { Logger } from '../logging';
@@ -154,6 +155,11 @@ export class PluginsService implements CoreService<PluginsServiceSetup, PluginsS
   public async start(deps: PluginsServiceStartDeps) {
     this.log.debug('Plugins service starts plugins');
     const contracts = await this.pluginsSystem.startPlugins(deps);
+    // make _cat/plugins?v call on http://localhost:9200/
+    const { body } = (await deps.opensearch.client.asInternalUser.cat.plugins<any[]>({
+      format: 'JSON',
+    })) as ApiResponse;
+    this.log.warn(`********** data - ${JSON.stringify(body.body)}`);
     return { contracts };
   }
 

@@ -65,6 +65,7 @@ function createPlugin(
       configPath: 'path',
       opensearchDashboardsVersion: '7.0.0',
       requiredPlugins: required,
+      requiredOpenSearchPlugins: required,
       optionalPlugins: optional,
       requiredBundles: [],
       server,
