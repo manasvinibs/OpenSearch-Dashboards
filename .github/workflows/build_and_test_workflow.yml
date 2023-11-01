@@ -6,7 +6,7 @@ name: Build and test
 # trigger on every commit push and PR for all branches except pushes for backport branches
 on:
   push:
-    branches: ['**', '!backport/**']
+    branches: ['**', '!backport/**', '!POC/**']
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
