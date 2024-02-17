@@ -14,6 +14,7 @@ import {
  * 2) add sample data of eCommerce, flights, web logs from tutorial page
  * 3) check each sample data dashboard key UI elements display
  */
+
 export function dashboardSanityTests() {
   const commonUI = new CommonUI(cy);
   const miscUtils = new MiscUtils(cy);
@@ -38,9 +39,15 @@ export function dashboardSanityTests() {
         cy.window().then((win) => win.localStorage.removeItem('home:welcome:show'));
       });
 
+      it('checking X plugin navigation is enabled', () => {
+        // Check that XCompat-plugin is visible
+        cy.wait(10000);
+        commonUI.checkElementExists(`a[href="${path}/app/xcompatpluginexampleone"]`, 1);
+      });
+
       it('checking opensearch_dashboards_overview display', () => {
         // Check that opensearch_dashboards_overview is visable
-        commonUI.checkElementExists(`a[href="${path}/app/opensearch_dashboards_overview"]`, 1);
+        commonUI.checkElementExists(`a[href="${path}/app/xcompatpluginexampleone"]`, 1);
       });
 
       it('checking tutorial_directory display', () => {
