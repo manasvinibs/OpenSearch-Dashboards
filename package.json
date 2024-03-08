@@ -230,9 +230,8 @@
     "type-detect": "^4.0.8",
     "uuid": "3.3.2",
     "whatwg-fetch": "^3.0.0",
-    "yauzl": "^2.10.0",
-    "@opensearch-dashboards-test/opensearch-dashboards-test-library": "https://github.com/opensearch-project/opensearch-dashboards-test-library/archive/refs/tags/1.0.6.tar.gz"
-    
+    "yauzl": "^2.10.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -471,7 +470,8 @@
     "vinyl-fs": "^3.0.3",
     "xml2js": "^0.5.0",
     "xmlbuilder": "13.0.2",
-    "zlib": "^1.0.5"
+    "zlib": "^1.0.5",
+    "@opensearch-dashboards-test/opensearch-dashboards-test-library": "https://github.com/opensearch-project/opensearch-dashboards-test-library/archive/refs/tags/1.0.6.tar.gz"
   },
   "engines": {
     "node": ">=14.20.1 <19",

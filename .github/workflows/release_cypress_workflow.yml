@@ -2,6 +2,8 @@ name: Orchestrator cypress workflow
 run-name: release_cypress_workflow ${{ inputs.UNIQUE_ID != '' && inputs.UNIQUE_ID || '' }} # Unique id number appended to the workflow run-name to reference the run within the orchestrator.
 # Trigger on dispatch event sent from FT repo orchestrator
 on:
+  push:
+    branches: [ '**' ]
   workflow_dispatch:
     inputs:
       test_repo:
