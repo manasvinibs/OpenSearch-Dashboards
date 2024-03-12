@@ -2,6 +2,8 @@ name: Orchestrator cypress workflow
 run-name: release_cypress_workflow ${{ inputs.UNIQUE_ID != '' && inputs.UNIQUE_ID || '' }} # Unique id number appended to the workflow run-name to reference the run within the orchestrator.
 # Trigger on dispatch event sent from FT repo orchestrator
 on:
+  push:
+    branches: [ '**' ]
   workflow_dispatch:
     inputs:
       test_repo:
@@ -47,7 +49,9 @@ env:
   DASHBOARDS: ${{ inputs.OSD_URL != '' && inputs.OSD_URL  || 'https://ci.opensearch.org/ci/dbc/distribution-build-opensearch-dashboards/$VERSION/latest/linux/x64/tar/dist/opensearch-dashboards/opensearch-dashboards-$VERSION-linux-x64.tar.gz' }}
   OPENSEARCH_DIR: 'cypress/opensearch'
   DASHBOARDS_DIR: 'cypress/opensearch-dashboards'
-  SECURITY_ENABLED: ${{ inputs.SECURITY_ENABLED != '' && inputs.SECURITY_ENABLED || 'false' }}
+  SECURITY_ENABLED: ${{ inputs.SECURITY_ENABLED != '' && inputs.SECURITY_ENABLED || 'true' }}
+  # 2.12 onwards security demo configuration require a custom admin password
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD: 'myStrongPassword123!'
 
 jobs:
   Get-CI-Image-Tag:

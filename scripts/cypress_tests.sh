@@ -17,12 +17,13 @@ then
   OPENSEARCH_MSG="\"status\":\"green\""
   OPENSEARCH_URL="http://localhost:9200/_cluster/health"
   OPENSEARCH_ARGS=""
+  DASHBOARDS_URL="http://localhost:5601/api/status"
 else 
   OPENSEARCH_MSG="\"status\":\"yellow\""
   OPENSEARCH_URL="https://localhost:9200/_cluster/health"
   OPENSEARCH_ARGS="-u $CREDENTIAL --insecure"
+  DASHBOARDS_URL="https://localhost:5601/api/status"
 fi
-DASHBOARDS_URL="http://localhost:5601/api/status"
 
 # Starts OpenSearch, if verifying a distribution it will install the certs then start.
 function run_opensearch() {
